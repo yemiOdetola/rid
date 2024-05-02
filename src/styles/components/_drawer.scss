@@ -1,0 +1,56 @@
+.drawer {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  background-color: #fff;
+  transition: transform 0.3s ease;
+  z-index: 999;
+  padding: config.$spacing;
+  width: 75%;
+  max-width: 400px;
+  &--left {
+    left: 0;
+    transform: translateX(-100%);
+
+    &--open {
+      transform: translateX(0);
+    }
+  }
+
+  &--right {
+    right: 0;
+    transform: translateX(100%);
+
+    &--open {
+      transform: translateX(0);
+    }
+  }
+
+  &--open {
+    transform: translateX(0);
+  }
+  &-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999;
+
+    &--open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+
+.drawer-logo {
+  width: 80%;
+  margin: 0 auto 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem 0 2rem;
+}

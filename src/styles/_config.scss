@@ -1,0 +1,35 @@
+/**
+ * Global config.
+ */
+
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.625rem;
+$spacing: 1rem;
+
+/**
+  * Colours.
+  */
+$body: #425466;
+$light: #f7f7f7;
+$light-gray: #212121;
+$gray: #636363;
+$error: #ee0a24;
+$primary: #2563eb;
+$primary-light: lighten($primary, 40%);
+$primary-dark: #06318e;
+
+$primary-gradient: linear-gradient(
+  270deg,
+  #4f83f2 0%,
+  #2563eb 50%,
+  #06318e 100%
+);
+
+/**
+  * Font sizes.
+  */
+
+$font: 0.875rem;
+$font-md: 1rem;
+$font-lg: 1.5rem;
+$font-xl: 2rem;
