@@ -1,0 +1,26 @@
+.events-container {
+  padding: 2rem 0;
+  width: 100%;
+  @media (min-width: 1024px) {
+    width: 90%;
+  }
+  .button-group {
+    display: flex;
+    align-items: center;
+    width: 90%;
+    max-width: 340px;
+    margin: 0 0 2rem;
+    button {
+      width: 50%;
+      height: 45px;
+      text-align: center;
+      cursor: pointer;
+      background-color: #fff;
+      color: config.$primary;
+      &.active {
+        background-color: config.$primary;
+        color: #fff;
+      }
+    }
+  }
+}

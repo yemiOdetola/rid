@@ -1,0 +1,59 @@
+table.events {
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid config.$gray;
+
+  th {
+    font-weight: bold;
+    font-size: config.$font-md;
+    color: config.$body;
+    border-bottom: 1px solid config.$gray;
+  }
+
+  td,
+  th {
+    padding: 1rem;
+    text-align: left;
+    color: config.$gray;
+  }
+
+  @media only screen and (max-width: 768px) {
+    width: 100%;
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+      display: block;
+    }
+
+    thead tr {
+      display: none;
+    }
+
+    td,
+    th {
+      padding: 0.5rem;
+    }
+
+    tr {
+      border-bottom: 1px solid config.$gray;
+    }
+
+    td {
+      border: none;
+      position: relative;
+      padding-left: 50%;
+      &:before {
+        position: absolute;
+        top: 32%;
+        left: 16px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        content: attr(data-column);
+        color: #000;
+      }
+    }
+  }
+}

@@ -24,8 +24,19 @@ h6 {
 }
 
 input,
+select,
+a,
+textarea,
 button {
-  outline: none;
+  border: none;
+  background: none;
+  &:focus,
+  &:active,
+  &:hover,
+  &:selected {
+    outline: 0;
+    box-shadow: 0 0 0 2px config.$light-gray, 0 0 0 4px config.$lite-gray;
+  }
 }
 
 /**
