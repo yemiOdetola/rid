@@ -59,7 +59,7 @@ export const events: Event[] = [
   {
     title: "Lagos tech meetup",
     organizer: "Events brite",
-    id: 1,
+    id: "id74822e792b29a",
     description:
       "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
     start: new Date(2024, 4, 2),
@@ -68,7 +68,7 @@ export const events: Event[] = [
   {
     title: "Lagos tech meetup",
     organizer: "Events brite",
-    id: 2,
+    id: "id56a609482e777",
     description:
       "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
     start: new Date(2024, 5, 9),
@@ -77,25 +77,16 @@ export const events: Event[] = [
   {
     title: "Grass to glory concert",
     organizer: "Dukka Community",
-    id: 3,
+    id: "id1eb197f8790b9",
     description:
       "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
     start: new Date(2024, 5, 15),
     end: new Date(2024, 5, 18),
   },
   {
-    title: "Lagos games week",
-    organizer: "Oriental events",
-    id: 4,
-    description:
-      "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
-    start: new Date(2024, 6, 1),
-    end: new Date(2024, 6, 10),
-  },
-  {
     title: "Flutter devs connect",
     organizer: "Events brite",
-    id: 5,
+    id: "idec00dc544f609",
     description:
       "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
     start: new Date(2024, 6, 11),
@@ -104,19 +95,10 @@ export const events: Event[] = [
   {
     title: "Founders networking night",
     organizer: "Oriental events",
-    id: 6,
+    id: "id0e8dbf1c7546c",
     description:
       "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
     start: new Date(2024, 7, 2),
     end: new Date(2024, 7, 4),
-  },
-  {
-    title: "Lagos games week",
-    organizer: "Events brite",
-    id: 7,
-    description:
-      "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
-    start: new Date(2024, 7, 7),
-    end: new Date(2024, 7, 8),
   },
 ];

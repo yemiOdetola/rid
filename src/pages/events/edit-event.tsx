@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useId, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { DateTime } from "luxon";
 import { Event } from "../../utils/data";
 import { AppContext } from "../../store/Context";
@@ -22,7 +22,6 @@ export default function EditEvent({
   onCancel,
 }: EventFormProps) {
   const isCreateMode = !initialEvent?.id;
-  const newEventId = useId();
   const { handleCreate, handleEdit } = useContext(AppContext)!;
   const [event, setEvent] = useState<Event>(initialEvent || defaultEvent);
 
@@ -44,12 +43,16 @@ export default function EditEvent({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const payload = { ...event, id: isCreateMode ? newEventId : event.id };
+    const payload = {
+      ...event,
+      id: isCreateMode ? "id" + Math.random().toString(16).slice(2) : event.id,
+    };
     if (isCreateMode) {
       handleCreate(payload);
     } else {
       handleEdit(payload);
     }
+    setEvent(defaultEvent);
     onCancel();
   };
 

@@ -22,7 +22,6 @@ table.events {
     font-weight: 300;
     color: config.$gray;
   }
-
   @media only screen and (max-width: 768px) {
     width: 100%;
     thead,
@@ -61,6 +60,23 @@ table.events {
         content: attr(data-column);
         color: #000;
       }
+    }
+  }
+}
+
+.prev-next {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1.25rem;
+  margin: 1rem 0;
+  button {
+    width: 100px;
+    height: 40px;
+    border: 1px solid config.$gray;
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
     }
   }
 }
