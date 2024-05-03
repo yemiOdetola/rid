@@ -24,3 +24,82 @@
     }
   }
 }
+
+.open-event {
+  position: relative;
+  padding: 3rem 0 1rem;
+  svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+  }
+  &-details {
+    .key-value {
+      margin: 1rem 0;
+      width: 90%;
+      .key {
+        color: config.$lite-gray;
+      }
+      .value {
+        line-height: 1.5rem;
+        color: config.$body;
+      }
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 3%;
+  button {
+    height: 40px;
+    width: 40%;
+    border-radius: 0.125rem;
+    background-color: lighten(config.$gray, 20%);
+    color: #fff;
+    transition: all 0.25s;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    &.delete {
+      background-color: config.$error;
+    }
+    &.save {
+      background-color: config.$primary;
+    }
+    &.cancel {
+      background-color: lighten(config.$gray, 20%);
+    }
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.edit-event {
+  width: 90%;
+  .field {
+    margin-bottom: 1rem;
+    label,
+    input {
+      display: block;
+    }
+    label {
+      color: config.$gray;
+      margin-bottom: 0.25rem;
+    }
+    input,
+    textarea {
+      width: 100%;
+      height: 32px;
+      border-radius: 0.125rem;
+      padding: 0.25rem 0.5rem;
+      border: 1px solid darken(config.$border, 40%);
+    }
+    textarea {
+      height: 140px;
+    }
+  }
+}

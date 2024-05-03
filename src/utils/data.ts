@@ -9,6 +9,7 @@ import {
 } from "lucide-react";
 
 export interface Event {
+  id?: string;
   title: string;
   organizer: string;
   description: string;
@@ -55,6 +56,14 @@ export const menuItems = [
 ];
 
 export const events: Event[] = [
+  {
+    title: "Lagos tech meetup",
+    organizer: "Events brite",
+    description:
+      "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
+    start: new Date(2024, 4, 2),
+    end: new Date(2024, 4, 3),
+  },
   {
     title: "Lagos tech meetup",
     organizer: "Events brite",

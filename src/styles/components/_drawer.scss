@@ -28,6 +28,8 @@
 
   &--open {
     transform: translateX(0);
+    overflow-y: scroll;
+    padding-bottom: 5rem;
   }
   &-overlay {
     position: fixed;

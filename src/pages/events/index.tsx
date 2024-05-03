@@ -1,10 +1,22 @@
-import { Calendar, luxonLocalizer } from "react-big-calendar";
-import { LayoutContainer } from "../components/layout";
-import { Event, events } from "../utils/data";
-import EventsTable from "../components/events-table";
 import { useState } from "react";
 import { DateTime } from "luxon";
-import Drawer from "../components/drawer";
+import { X } from "lucide-react";
+import { Calendar, luxonLocalizer } from "react-big-calendar";
+import { LayoutContainer } from "../../components/layout";
+import { Event, events } from "../../utils/data";
+import EventsTable from "../../components/events-table";
+import Drawer from "../../components/drawer";
+import EditEvent from "./edit-event";
+import { formatDate } from "../../utils";
+import EventDetails from "./event-details";
+
+// const defaultEvent: Event = {
+//   title: "",
+//   description: "",
+//   start: new Date(),
+//   end: new Date(),
+//   organizer: "",
+// };
 
 export default function Events() {
   const [tab, setTab] = useState<"list" | "calendar">("list");
@@ -13,9 +25,8 @@ export default function Events() {
   const localizer = luxonLocalizer(DateTime);
 
   const handleEventClick = (event: Event) => {
-    toggleDrawerState(true);
     setCurrentEvent(event);
-    console.log("eekkekekekeelellel", event);
+    toggleDrawerState(true);
   };
 
   return (
@@ -50,18 +61,20 @@ export default function Events() {
         onClose={() => toggleDrawerState(false)}
         position="right"
       >
-        {currentEvent && currentEvent.title ? (
-          <div className="open-event">
-            <h1>{currentEvent.title}</h1>
-            <h1>Heyyyy</h1>
-            <h1>Heyyyy</h1>
-            <h1>Heyyyy</h1>
-            <h1>Heyyyy</h1>
-            <h1>Heyyyy</h1>
-            <h1>Heyyyy</h1>
-            <h1>Heyyyy</h1>
-          </div>
-        ) : null}
+        <X onClick={() => toggleDrawerState(false)} />
+        {currentEvent && (
+          <EditEvent
+            event={currentEvent}
+            onSave={(event) => console.log("event", event)}
+            onCancel={() => console.log("cancelleddd!")}
+          />
+        )}
+        {currentEvent && (
+          <EventDetails
+            currentEvent={currentEvent}
+            toggleDrawerState={toggleDrawerState}
+          />
+        )}
       </Drawer>
     </LayoutContainer>
   );
