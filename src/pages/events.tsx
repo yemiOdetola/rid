@@ -2,13 +2,10 @@ import { useContext, useEffect, useState } from "react";
 import { DateTime } from "luxon";
 import { X } from "lucide-react";
 import { Calendar, luxonLocalizer } from "react-big-calendar";
-import { LayoutContainer } from "../../components/layout";
-import { Event } from "../../utils/data";
-import EventsTable from "../../components/events-table";
-import Drawer from "../../components/drawer";
-import EditEvent from "./edit-event";
-import EventDetails from "./event-details";
-import { AppContext } from "../../store/Context";
+import { LayoutContainer } from "../components/layout";
+import { Event } from "../utils/data";
+import { EventsTable, EditEvent, EventDetails, Drawer } from "../components";
+import { AppContext } from "../store/context";
 
 export default function Events() {
   const { events, deleteEvent } = useContext(AppContext)!;
@@ -69,7 +66,7 @@ export default function Events() {
           <button onClick={() => editEvent(null)}>Create an event</button>
         </div>
         {tab === "list" ? (
-          <EventsTable events={events} viewEvent={viewEvent} />
+          <EventsTable events={events} viewEvent={viewEvent} pagination />
         ) : null}
         {tab === "calendar" ? (
           <Calendar

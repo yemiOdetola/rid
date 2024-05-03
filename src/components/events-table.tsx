@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Event } from "../utils/data";
 import { CloudSnow } from "lucide-react";
 
 interface Props {
   events: Event[];
+  pagination: boolean;
   viewEvent: (event: Event) => void;
 }
 
-const EventsTable = ({ events, viewEvent }: Props) => {
+const EventsTable = ({ events, viewEvent, pagination }: Props) => {
   const [page, setPage] = useState<number>(1);
   const [pageSize] = useState<number>(10);
 
@@ -87,7 +88,7 @@ const EventsTable = ({ events, viewEvent }: Props) => {
         </thead>
         <tbody>{renderTableRows()}</tbody>
       </table>
-      {renderPagination()}
+      {pagination ? renderPagination() : null}
     </>
   );
 };

@@ -42,7 +42,7 @@ export default function Header({ title }: HeaderProps) {
         </Drawer>
       </div>
       <header className="header-container">
-        <span className="title">{title || "n/A"}</span>
+        <span className="title">{title || "Events assessment"}</span>
         <div className="menu-section">
           <button className="notification">
             <User2 />

@@ -52,7 +52,7 @@ export default function Dashboard() {
             <section className="events">
               <h2>Latest Events</h2>
               <div className="events-latest">
-                <EventsTable events={events} viewEvent={() => {}} />
+                <EventsTable events={events} viewEvent={() => {}} pagination={false} />
               </div>
             </section>
           </div>

@@ -1,5 +1,5 @@
-import { formatDate } from "../../utils";
-import { Event } from "../../utils/data";
+import { formatDate } from "../utils";
+import { Event } from "../utils/data";
 
 interface EventDetailsProps {
   currentEvent: Event;

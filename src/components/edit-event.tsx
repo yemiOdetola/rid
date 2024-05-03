@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DateTime } from "luxon";
-import { Event } from "../../utils/data";
-import { AppContext } from "../../store/Context";
+import { Event } from "../utils/data";
+import { AppContext } from "../store/context";
 
 interface EventFormProps {
   event: Event | null;
