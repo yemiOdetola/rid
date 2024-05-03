@@ -4,25 +4,44 @@
   @media (min-width: 1024px) {
     width: 90%;
   }
-  .button-group {
+  .header {
     display: flex;
+    justify-content: space-between;
     align-items: center;
-    width: 90%;
-    max-width: 340px;
-    margin: 0 0 2rem;
+    margin-bottom: 2rem;
     button {
-      width: 50%;
       height: 45px;
       text-align: center;
       cursor: pointer;
-      background-color: #fff;
-      color: config.$primary;
-      &.active {
-        background-color: config.$primary;
-        color: #fff;
+      border-radius: 0.125rem;
+      color: #fff;
+      width: 180px;
+      background-color: config.$primary;
+    }
+    .button-group {
+      display: flex;
+      align-items: center;
+      width: 90%;
+      max-width: 340px;
+      margin: 0 0 2rem;
+      button {
+        background: none;
+        width: 50%;
+        color: config.$gray;
+        transition: all 0.125s ease-in-out;
+        &.active {
+          color: config.$primary;
+          border-bottom: 2px solid config.$primary;
+        }
       }
     }
   }
+}
+
+h3.title {
+  font-weight: 400;
+  margin: 1rem 0;
+  font-size: 1.5rem;
 }
 
 .open-event {
@@ -52,6 +71,7 @@
 .actions {
   display: flex;
   align-items: center;
+  margin: 2rem 0;
   gap: 3%;
   button {
     height: 40px;
@@ -79,8 +99,9 @@
 }
 
 .edit-event {
-  width: 90%;
+  width: 100%;
   .field {
+    width: 96%;
     margin-bottom: 1rem;
     label,
     input {

@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 
 export interface Event {
-  id?: string;
+  id?: number | string;
   title: string;
   organizer: string;
   description: string;
@@ -59,6 +59,7 @@ export const events: Event[] = [
   {
     title: "Lagos tech meetup",
     organizer: "Events brite",
+    id: 12345,
     description:
       "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
     start: new Date(2024, 4, 2),
@@ -67,6 +68,7 @@ export const events: Event[] = [
   {
     title: "Lagos tech meetup",
     organizer: "Events brite",
+    id: 12345,
     description:
       "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
     start: new Date(2024, 5, 9),
@@ -75,6 +77,7 @@ export const events: Event[] = [
   {
     title: "Grass to glory concert",
     organizer: "Dukka Community",
+    id: 12345,
     description:
       "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
     start: new Date(2024, 5, 15),
@@ -83,6 +86,7 @@ export const events: Event[] = [
   {
     title: "Lagos games week",
     organizer: "Oriental events",
+    id: 12345,
     description:
       "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
     start: new Date(2024, 6, 1),
@@ -91,6 +95,7 @@ export const events: Event[] = [
   {
     title: "Flutter devs connect",
     organizer: "Events brite",
+    id: 12345,
     description:
       "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
     start: new Date(2024, 6, 11),
@@ -99,6 +104,7 @@ export const events: Event[] = [
   {
     title: "Founders networking night",
     organizer: "Oriental events",
+    id: 12345,
     description:
       "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
     start: new Date(2024, 7, 2),
@@ -107,6 +113,7 @@ export const events: Event[] = [
   {
     title: "Lagos games week",
     organizer: "Events brite",
+    id: 12345,
     description:
       "Whether you're a local, new in town or just cruising through we've got loads of great tips and events.",
     start: new Date(2024, 7, 7),

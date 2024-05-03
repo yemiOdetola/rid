@@ -2,17 +2,20 @@ import { formatDate } from "../../utils";
 import { Event } from "../../utils/data";
 
 interface EventDetailsProps {
-  currentEvent: Event | null;
+  currentEvent: Event;
   toggleDrawerState: (state: boolean) => void;
+  editEvent: (event: Event) => void;
+  deleteEvent: (eventId: any) => void;
 }
 
 const EventDetails = ({
   currentEvent,
-  toggleDrawerState,
+  editEvent,
+  deleteEvent,
 }: EventDetailsProps) => {
   return (
     <div className="open-event">
-      <h2>Event Details</h2>
+      <h3 className="title">Event Details</h3>
       {currentEvent && currentEvent.title ? (
         <div className="open-event-details">
           <div className="key-value">
@@ -36,8 +39,15 @@ const EventDetails = ({
             <div className="value">{currentEvent.organizer}</div>
           </div>
           <div className="actions">
-            <button className="delete">Delete</button>
-            <button className="edit">Edit</button>
+            <button
+              className="delete"
+              onClick={() => currentEvent && deleteEvent(currentEvent?.id)}
+            >
+              Delete
+            </button>
+            <button className="edit" onClick={() => editEvent(currentEvent)}>
+              Edit
+            </button>
           </div>
         </div>
       ) : (
