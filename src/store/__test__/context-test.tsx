@@ -103,7 +103,6 @@ describe("AppProvider", () => {
     );
 
     const createButton = getByText("Create Event");
-    // const eventCountBefore = getByText(`${baseEvents.length}`);
 
     act(() => {
       fireEvent.click(createButton);

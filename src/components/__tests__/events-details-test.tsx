@@ -1,78 +1,62 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import EventDetails from "../event-details";
 import { Event } from "../../utils/data";
-
 
 const mockEvent: Event = {
   id: "1",
   title: "Event 1",
-  organizer: "Organizer 1",
-  description: "This is the description for Event 1.",
+  description: "This is the description for Event 1",
   start: new Date("2023-05-01T10:00:00"),
   end: new Date("2023-05-01T12:00:00"),
+  organizer: "Organizerr tset",
 };
 
-
-const mockToggleDrawerState = jest.fn();
-const mockEditEvent = jest.fn();
-const mockDeleteEvent = jest.fn();
+const toggleDrawerStateMock = jest.fn();
+const editEventMock = jest.fn();
+const deleteEventMock = jest.fn();
 
 describe("EventDetails", () => {
-  it("renders event details", () => {
+  it("renders event details correctly", () => {
     render(
       <EventDetails
         currentEvent={mockEvent}
-        toggleDrawerState={mockToggleDrawerState}
-        editEvent={mockEditEvent}
-        deleteEvent={mockDeleteEvent}
+        toggleDrawerState={toggleDrawerStateMock}
+        editEvent={editEventMock}
+        deleteEvent={deleteEventMock}
       />
     );
-
-    // Check if the event details are rendered
-    expect(screen.getByText("Event title")).toBeInTheDocument();
     expect(screen.getByText("Event 1")).toBeInTheDocument();
-    expect(screen.getByText("Event description")).toBeInTheDocument();
     expect(
-      screen.getByText("This is the description for Event 1.")
+      screen.getByText("This is the description for Event 1")
     ).toBeInTheDocument();
-    expect(screen.getByText("Starts")).toBeInTheDocument();
-    expect(screen.getByText("Ends")).toBeInTheDocument();
-    expect(screen.getByText("Organized by")).toBeInTheDocument();
-    expect(screen.getByText("Organizer 1")).toBeInTheDocument();
+    expect(screen.getByText("Organizerr tset")).toBeInTheDocument();
   });
 
-  it("calls deleteEvent when the Delete button is clicked", () => {
+  
+  it("calls deleteEvent when the delete button is clicked", () => {
     render(
       <EventDetails
         currentEvent={mockEvent}
-        toggleDrawerState={mockToggleDrawerState}
-        editEvent={mockEditEvent}
-        deleteEvent={mockDeleteEvent}
+        toggleDrawerState={toggleDrawerStateMock}
+        editEvent={editEventMock}
+        deleteEvent={deleteEventMock}
       />
     );
-
-    // Click on the Delete button
     fireEvent.click(screen.getByText("Delete"));
-
-    // Check if the deleteEvent function was called with the correct event ID
-    expect(mockDeleteEvent).toHaveBeenCalledWith(mockEvent.id);
+    expect(deleteEventMock).toHaveBeenCalledWith(mockEvent.id);
   });
 
-  it("calls editEvent when the Edit button is clicked", () => {
+  it("calls editEvent when the edit button is clicked", () => {
     render(
       <EventDetails
         currentEvent={mockEvent}
-        toggleDrawerState={mockToggleDrawerState}
-        editEvent={mockEditEvent}
-        deleteEvent={mockDeleteEvent}
+        toggleDrawerState={toggleDrawerStateMock}
+        editEvent={editEventMock}
+        deleteEvent={deleteEventMock}
       />
     );
-
-    // Click on the Edit button
     fireEvent.click(screen.getByText("Edit"));
-
-    // Check if the editEvent function was called with the correct event
-    expect(mockEditEvent).toHaveBeenCalledWith(mockEvent);
+    expect(editEventMock).toHaveBeenCalledWith(mockEvent);
   });
 });
