@@ -11,6 +11,7 @@ table.events {
     font-weight: bold;
     font-size: config.$font-md;
     color: config.$body;
+    word-break: break-all;
     border-bottom: 1px solid config.$gray;
   }
 
@@ -49,6 +50,7 @@ table.events {
       border: none;
       position: relative;
       padding-left: 50%;
+      word-break: break-all;
       &:before {
         position: absolute;
         top: 32%;

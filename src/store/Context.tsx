@@ -15,8 +15,13 @@ const AppContext = createContext<AppState | undefined>(undefined);
 
 const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
-  const [events, setEvents] = useState<Event[]>([]);
-
+  const [events, setEvents] = useState<Event[]>(() => {
+    const storedEvents = localStorage.getItem("events");
+    return storedEvents !== null && storedEvents !== "[]"
+      ? JSON.parse(storedEvents)
+      : baseEvents;
+  });
+  
   useEffect(() => {
     const storedEvents = localStorage.getItem("events");
     if (storedEvents !== null && storedEvents !== "[]") {

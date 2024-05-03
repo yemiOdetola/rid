@@ -1,22 +1,30 @@
 .events-container {
   padding: 2rem 0;
   width: 100%;
-  @media (min-width: 1024px) {
+  @media (min-width: 1200px) {
     width: 90%;
   }
   .header {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
+    @media (min-width: 992px) {
+      flex-direction: row;
+    }
     button {
       height: 45px;
       text-align: center;
       cursor: pointer;
       border-radius: 0.125rem;
       color: #fff;
-      width: 180px;
+      width: 150px;
       background-color: config.$primary;
+      margin: 20px 0;
+      @media (min-width: 992px) {
+        width: 180px;
+      }
     }
     .button-group {
       display: flex;
@@ -28,6 +36,7 @@
         width: 50%;
         color: config.$gray;
         transition: all 0.125s ease-in-out;
+        margin: 0;
         &.active {
           color: config.$primary;
           border-bottom: 2px solid config.$primary;
@@ -45,7 +54,7 @@ h3.title {
 
 .open-event {
   position: relative;
-  padding: 3rem 0 1rem;
+  padding: 1rem 0;
   svg {
     position: absolute;
     top: 0;

@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Bell, Menu, Shell } from "lucide-react";
+import { Bell, Menu, Shell, User2 } from "lucide-react";
 import Drawer from "../drawer";
 import { menuItems } from "../../utils/data";
 import { renderItems } from "./menu-items";
@@ -33,10 +33,10 @@ export default function Header({ title }: HeaderProps) {
           >
             <div className="drawer-logo">
               <div className="logo">
-                <div className="logo">
+                {/* <div className="logo">
                   <Shell />
                   <span>e-vents</span>
-                </div>
+                </div> */}
               </div>
             </div>
             {renderItems({ menuItems, toggleDrawerState })}
@@ -47,7 +47,7 @@ export default function Header({ title }: HeaderProps) {
         <span className="title">{title || "n/A"}</span>
         <div className="menu-section">
           <button className="notification">
-            <Bell />
+            <User2 />
           </button>
         </div>
       </header>

@@ -9,23 +9,28 @@ interface Props {
 
 const EventsTable = ({ events, viewEvent }: Props) => {
   const renderTableRows = () => {
-    return events.map((event, index) => (
-      <tr key={`event-${index}`}>
-        <td
-          className="underline"
-          data-column="ID"
-          onClick={() => viewEvent(event)}
-        >
-          Event-{event.id}
-        </td>
-        <td data-column="Title">{event.title}</td>
-        <td data-column="Organizer">{event.organizer}</td>
-        <td data-column="Description">
-          {event.description.substring(0, 80)}...
-        </td>
-        <td data-column="Date">{event.start.toDateString()}</td>
-      </tr>
-    )).reverse();
+    return events
+      .map((event, index) => (
+        <tr key={`event-${index}`}>
+          <td
+            className="underline"
+            data-column="ID"
+            onClick={() => viewEvent(event)}
+          >
+            Event-{event.id}
+          </td>
+          <td data-column="Title">{event.title}</td>
+          <td data-column="Organizer">{event.organizer}</td>
+          <td data-column="Description">
+            {event.description.substring(0, 55)}...
+          </td>
+          <td data-column="Duration">
+            {new Date(event.start).toDateString()} -{" "}
+            {new Date(event.end).toDateString()}
+          </td>
+        </tr>
+      ))
+      .reverse();
   };
 
   if (!events || events.length === 0) {
@@ -45,7 +50,7 @@ const EventsTable = ({ events, viewEvent }: Props) => {
           <th>Title</th>
           <th>Organizer</th>
           <th>Description</th>
-          <th>Date</th>
+          <th>Duration</th>
         </tr>
       </thead>
       <tbody>{renderTableRows()}</tbody>

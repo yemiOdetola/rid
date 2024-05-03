@@ -38,6 +38,9 @@ button {
     box-shadow: 0 0 0 2px config.$light-gray, 0 0 0 4px config.$lite-gray;
   }
 }
+.rbc-toolbar .rbc-toolbar-label {
+  margin: 1.25rem 0;
+}
 
 /**
 |--------------------------------------------------

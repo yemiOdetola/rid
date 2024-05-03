@@ -21,12 +21,15 @@
     }
     .tiles {
       display: flex;
+      flex-direction: column;
       justify-content: flex-start;
       gap: 1%;
       margin-top: 1.25rem;
       width: 100%;
+      @media (min-width: 992px) {
+        flex-direction: row;
+      }
       .tile {
-        width: 100%;
         padding: 1rem;
         border-radius: 8px;
         background-color: config.$olive;
@@ -36,6 +39,7 @@
         flex-direction: column;
         justify-content: space-between;
         position: relative;
+        margin-bottom: 1rem;
         transition: 0.25s ease-in-out;
         @media (min-width: 1024px) {
           width: 30%;

@@ -7,7 +7,11 @@
   z-index: 999;
   padding: config.$spacing;
   width: 75%;
+  padding-top: 6rem;
   max-width: 400px;
+  @media (min-width: 992px) {
+    padding-top: 2rem;
+  }
   &--left {
     left: 0;
     transform: translateX(-100%);
