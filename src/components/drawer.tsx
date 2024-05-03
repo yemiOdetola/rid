@@ -22,7 +22,7 @@ const Drawer = ({
       <div
         className={`drawer ${isOpen && "drawer--open"} ${
           position === "left" && "drawer--left"
-        } ${position === "right" && "drawer-right"}`}
+        } ${position === "right" && "drawer--right"}`}
       >
         {children}
       </div>
