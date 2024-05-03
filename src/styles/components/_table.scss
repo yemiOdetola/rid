@@ -2,7 +2,11 @@ table.events {
   width: 100%;
   border-collapse: collapse;
   border: 1px solid config.$gray;
-
+  .underline {
+    text-decoration: underline;
+    cursor: pointer;
+    color: config.$light-gray;
+  }
   th {
     font-weight: bold;
     font-size: config.$font-md;
@@ -12,8 +16,9 @@ table.events {
 
   td,
   th {
-    padding: 1rem;
+    padding: 1.25rem;
     text-align: left;
+    font-weight: 300;
     color: config.$gray;
   }
 

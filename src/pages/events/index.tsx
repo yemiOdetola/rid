@@ -1,30 +1,22 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { DateTime } from "luxon";
 import { X } from "lucide-react";
 import { Calendar, luxonLocalizer } from "react-big-calendar";
 import { LayoutContainer } from "../../components/layout";
-import { Event, events } from "../../utils/data";
+import { Event } from "../../utils/data";
 import EventsTable from "../../components/events-table";
 import Drawer from "../../components/drawer";
 import EditEvent from "./edit-event";
 import EventDetails from "./event-details";
-
-const defaultEvent: Event = {
-  title: "",
-  description: "",
-  start: new Date(),
-  end: new Date(),
-  organizer: "",
-};
+import { AppContext } from "../../store/Context";
 
 export default function Events() {
+  const { events, deleteEvent } = useContext(AppContext)!;
   const [tab, setTab] = useState<"list" | "calendar">("list");
   const [drawerState, toggleDrawerState] = useState<boolean>(false);
   const [drawerType, setDrawerType] = useState<"edit" | "view">("view");
   const [currentEvent, setCurrentEvent] = useState<Event | null>(null);
   const localizer = luxonLocalizer(DateTime);
-
-  console.log('currentEvent:::', currentEvent);
 
   const viewEvent = (event: Event) => {
     setDrawerType("view");
@@ -38,9 +30,10 @@ export default function Events() {
     toggleDrawerState(true);
   };
 
-  const deleteEvent = (eventId: string) => {
+  const removeEvent = (eventId: string) => {
     if (window.confirm("Do you want to delete this event?")) {
-      console.log(eventId);
+      toggleDrawerState(false);
+      deleteEvent(eventId);
     }
   };
 
@@ -64,7 +57,9 @@ export default function Events() {
           </div>
           <button onClick={() => editEvent(null)}>Create an event</button>
         </div>
-        {tab === "list" ? <EventsTable events={events} /> : null}
+        {tab === "list" ? (
+          <EventsTable events={events} viewEvent={viewEvent} />
+        ) : null}
         {tab === "calendar" ? (
           <Calendar
             localizer={localizer}
@@ -83,7 +78,7 @@ export default function Events() {
         {drawerType === "edit" && (
           <EditEvent
             event={currentEvent}
-            onSave={(event) => console.log("event", event)}
+            // onSave={(event) => console.log("event", event)}
             onCancel={() => toggleDrawerState(false)}
           />
         )}
@@ -92,7 +87,7 @@ export default function Events() {
             currentEvent={currentEvent}
             toggleDrawerState={toggleDrawerState}
             editEvent={() => editEvent(currentEvent)}
-            deleteEvent={deleteEvent}
+            deleteEvent={removeEvent}
           />
         )}
       </Drawer>

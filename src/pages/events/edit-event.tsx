@@ -1,11 +1,10 @@
-import React, { useEffect, useId, useState } from "react";
+import React, { useContext, useEffect, useId, useState } from "react";
 import { DateTime } from "luxon";
 import { Event } from "../../utils/data";
+import { AppContext } from "../../store/Context";
 
 interface EventFormProps {
-  // event: Event;
   event: Event | null;
-  onSave: (event: Event) => void;
   onCancel: () => void;
 }
 
@@ -20,10 +19,11 @@ const defaultEvent: Event = {
 
 export default function EditEvent({
   event: initialEvent,
-  onSave,
   onCancel,
 }: EventFormProps) {
-  const isCreateMode = !defaultEvent?.id;
+  const isCreateMode = !initialEvent?.id;
+  const newEventId = useId();
+  const { handleCreate, handleEdit } = useContext(AppContext)!;
   const [event, setEvent] = useState<Event>(initialEvent || defaultEvent);
 
   useEffect(() => {
@@ -39,15 +39,18 @@ export default function EditEvent({
   }, [initialEvent]);
 
   const handleChange = (prop: keyof Event, value: string | Date) => {
-    setEvent((prevEvent) => ({
-      ...prevEvent,
-      [prop]: value,
-    }));
+    setEvent((prevEvent) => ({ ...prevEvent, [prop]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSave(event);
+    const payload = { ...event, id: isCreateMode ? newEventId : event.id };
+    if (isCreateMode) {
+      handleCreate(payload);
+    } else {
+      handleEdit(payload);
+    }
+    onCancel();
   };
 
   return (
@@ -78,7 +81,6 @@ export default function EditEvent({
             onChange={(e) => handleChange("end", new Date(e.target.value))}
           />
         </div>
-
         <div className="field">
           <label>Event description:</label>
           <textarea

@@ -1,22 +1,41 @@
 import React from "react";
 import { Event } from "../utils/data";
+import { CloudSnow } from "lucide-react";
 
 interface Props {
   events: Event[];
+  viewEvent: (event: Event) => void;
 }
 
-const EventsTable = ({ events }: Props) => {
+const EventsTable = ({ events, viewEvent }: Props) => {
   const renderTableRows = () => {
     return events.map((event, index) => (
       <tr key={`event-${index}`}>
-        <td data-column="ID">Event-{index}</td>
+        <td
+          className="underline"
+          data-column="ID"
+          onClick={() => viewEvent(event)}
+        >
+          Event-{event.id}
+        </td>
         <td data-column="Title">{event.title}</td>
         <td data-column="Organizer">{event.organizer}</td>
-        <td data-column="Description">{event.description}</td>
+        <td data-column="Description">
+          {event.description.substring(0, 80)}...
+        </td>
         <td data-column="Date">{event.start.toDateString()}</td>
       </tr>
-    ));
+    )).reverse();
   };
+
+  if (!events || events.length === 0) {
+    return (
+      <div className="empty-state">
+        <h3>No events</h3>
+        <CloudSnow size={80} />
+      </div>
+    );
+  }
 
   return (
     <table className="events">
