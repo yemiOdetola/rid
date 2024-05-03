@@ -1,5 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
+import { act } from "react";
 import EventsTable from "../events-table";
 import { Event } from "../../utils/data";
 
@@ -27,45 +28,53 @@ const viewEventMock = jest.fn();
 
 describe("EventsTable", () => {
   it("renders the table with events", () => {
-    render(
-      <EventsTable
-        events={mockEvents}
-        viewEvent={viewEventMock}
-        pagination={false}
-      />
-    );
+    act(() => {
+      render(
+        <EventsTable
+          events={mockEvents}
+          viewEvent={viewEventMock}
+          pagination={false}
+        />
+      );
+    });
     expect(screen.getByText("Event 1")).toBeInTheDocument();
     expect(screen.getByText("Event 2")).toBeInTheDocument();
   });
 
   it("renders the correct pagination controls when pagination is enabled", () => {
-    render(
-      <EventsTable
-        events={mockEvents}
-        viewEvent={viewEventMock}
-        pagination={true}
-      />
-    );
+    act(() => {
+      render(
+        <EventsTable
+          events={mockEvents}
+          viewEvent={viewEventMock}
+          pagination={true}
+        />
+      );
+    });
     expect(screen.getByText("Prev")).toBeInTheDocument();
     expect(screen.getByText("Next")).toBeInTheDocument();
   });
 
   it("calls viewEvent when an event is clicked", () => {
-    render(
-      <EventsTable
-        events={mockEvents}
-        viewEvent={viewEventMock}
-        pagination={false}
-      />
-    );
+    act(() => {
+      render(
+        <EventsTable
+          events={mockEvents}
+          viewEvent={viewEventMock}
+          pagination={false}
+        />
+      );
+    });
     fireEvent.click(screen.getByText("Event 1"));
     expect(viewEventMock).toHaveBeenCalledWith(mockEvents[0]);
   });
 
   it("renders a message when there are no events", () => {
-    render(
-      <EventsTable events={[]} viewEvent={viewEventMock} pagination={false} />
-    );
+    act(() => {
+      render(
+        <EventsTable events={[]} viewEvent={viewEventMock} pagination={false} />
+      );
+    });
     expect(screen.getByText("No events")).toBeInTheDocument();
   });
 });
